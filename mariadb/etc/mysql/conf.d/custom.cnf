@@ -1,0 +1,30 @@
+[mysqld]
+# debug=d
+
+sql_mode = ''
+
+# Fine Tuning
+key_buffer_size = 256M
+max_allowed_packet = 256M
+thread_stack = 192K
+thread_cache_size = 8
+myisam-recover-options = BACKUP
+max_connections = 500
+table_open_cache = 512
+query_cache_limit = 1M
+query_cache_size = 64M
+
+
+innodb_buffer_pool_size = 2G
+innodb_log_file_size = 512M
+innodb_log_buffer_size = 16M
+innodb_flush_log_at_trx_commit = 1
+innodb_lock_wait_timeout = 50
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = 16M
+
+[isamchk]
+key_buffer = 16M
