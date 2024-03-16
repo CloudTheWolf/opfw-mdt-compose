@@ -1,0 +1,27 @@
+version: '3.1'
+networks:
+  traefik_default:
+    external: true
+    name: "traefik_default"
+
+services:
+  mariadb:
+    container_name: "mariadb"
+    hostname: "mariadb"
+    image: "mariadb:latest"
+    networks:
+      - "traefik_default"
+
+    ports:
+      - "3306:3306/tcp"
+
+    restart: "unless-stopped"
+
+    volumes:
+      - "/etc/mysql/conf.d/custom.cnf:/etc/mysql/conf.d/custom.cnf:rw"
+      - "mysql_data:/var/lib/mysql"
+
+volumes:
+  mysql_data:
+    external: true
+
