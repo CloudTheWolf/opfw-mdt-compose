@@ -1,0 +1,40 @@
+version: '3.9'
+
+networks:
+  traefik_default:
+    name: traefik_default
+    external: true
+
+services:
+  mdt-pdbot:
+    image: repo.legacyrp.company/cloudthewolf/mdt-server:latest
+    container_name: legacy-mdt-pd-bot
+    environment:
+      NODE_ENV: production
+      NPM_START_ARGS: "run bot" 
+      APP_FILE: "bot.js"
+      APP_NAME: "mdt-pd-bot"
+    networks:
+      - traefik_default
+    volumes:
+      - /conf/mdt-v2-server/.env:/usr/src/app/.env
+      - /nodelogs/:/home/node/.npm/_logs/
+      - /nodecache/:/home/node/.npm/_cacache
+    restart: unless-stopped
+    
+  # Remove the following if you don't need EMS Bot
+  mdt-emsbot:
+    image: repo.legacyrp.company/cloudthewolf/mdt-server:latest
+    container_name: legacy-mdt-ems-bot
+    environment:
+      NODE_ENV: production
+      NPM_START_ARGS: "run emsBot" 
+      APP_FILE: "emsBot.js"
+      APP_NAME: "mdt-ems-bot"
+    networks:
+      - traefik_default
+    volumes:
+      - /conf/mdt-v2-server/.env:/usr/src/app/.env
+      - /nodelogs/:/home/node/.npm/_logs/
+      - /nodecache/:/home/node/.npm/_cacache
+    restart: unless-stopped
