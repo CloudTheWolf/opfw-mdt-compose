@@ -1,0 +1,60 @@
+version: '3.9'
+
+networks:
+  traefik_default:
+    name: traefik_default
+    external: true
+
+services:
+  mdt-server:
+    image: repo.legacyrp.company/cloudthewolf/mdt-server:latest
+    container_name: legacy-mdt-server
+    environment:
+      NODE_ENV: production
+      NPM_START_ARGS: "start" 
+      APP_FILE: "index.js"
+      APP_NAME: "mdt-v2-server"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mdt-server.entrypoints=websecure
+      - traefik.http.routers.mdt-server.rule=Host(`pd-server.mysite.com`)
+      - traefik.http.routers.mdt-server.tls.certresolver=myresolver
+      - traefik.http.services.mdt-server.loadbalancer.server.port=3001
+      - "traefik.http.middlewares.mdt-server-cors.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST,DELETE,HEAD"
+      - "traefik.http.middlewares.mdt-server-cors.headers.accessControlAllowOriginList=*"
+      - "traefik.http.middlewares.mdt-server-cors.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization"
+      - "traefik.http.middlewares.mdt-server-cors.headers.accessControlExposeHeaders=Content-Length, Content-Range"      
+      - "traefik.http.routers.mdt-server.middlewares=mdt-server-cors"
+    networks:
+      - traefik_default
+    volumes:
+      - /conf/mdt-v2-server/.env:/usr/src/app/.env
+      - /nodelogs/:/home/node/.npm/_logs/
+      - /nodecache/:/home/node/.npm/_cacache
+    restart: unless-stopped
+      
+  mdt-client:
+    image: repo.legacyrp.company/cloudthewolf/mdt-client:latest
+    container_name: legacy-mdt-client
+    environment:
+      NODE_ENV: production
+      NPM_START_ARGS: "start"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mdt-client.entrypoints=websecure
+      - traefik.http.routers.mdt-client.rule=Host(`mdt.mysite.com`)
+      - traefik.http.routers.mdt-client.tls.certresolver=myresolver
+      - traefik.http.services.mdt-client.loadbalancer.server.port=80
+      - "traefik.http.middlewares.mdt-client-cors.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST,DELETE,HEAD"
+      - "traefik.http.middlewares.mdt-client-cors.headers.accessControlAllowOriginList=*"
+      - "traefik.http.middlewares.mdt-client-cors.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization"
+      - "traefik.http.middlewares.mdt-client-cors.headers.accessControlExposeHeaders=Content-Length, Content-Range"      
+      - "traefik.http.routers.mdt-client.middlewares=mdt-client-cors"
+    networks:
+      - traefik_default
+    volumes:
+      - /conf/mdt-client/helpers/axios-setup.js:/usr/src/app/src/helpers/axios-setup.js
+      - /opt/bots/docker-build/mdt-v2-client/node_modules:/usr/src/app/node_modules
+    restart: unless-stopped
+      
+
