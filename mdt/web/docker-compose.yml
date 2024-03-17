@@ -7,7 +7,7 @@ networks:
 
 services:
   mdt-server:
-    image: repo.legacyrp.company/cloudthewolf/mdt-server:latest
+    image: repo.legacyrp.company/mdt-server:latest
     container_name: legacy-mdt-server
     environment:
       NODE_ENV: production
@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
       
   mdt-client:
-    image: repo.legacyrp.company/cloudthewolf/mdt-client:latest
+    image: repo.legacyrp.company/mdt-client:latest
     container_name: legacy-mdt-client
     environment:
       NODE_ENV: production
