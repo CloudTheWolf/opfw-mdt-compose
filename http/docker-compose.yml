@@ -1,0 +1,21 @@
+version: "3.6"
+networks:
+  traefik_default:
+    external: true
+    name: "traefik_default"
+
+services:
+  legacy-api-cache:
+    container_name: "legacy-api-cache"
+    hostname: "cache.mysite.com"
+    image: "httpd:latest"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.apache.entrypoints: "websecure"
+      traefik.http.routers.apache.rule: "Host(`cache.mysite.com`)"
+      traefik.http.routers.apache.tls.certresolver: "myresolver"
+    networks:
+      - "traefik_default"
+    restart: "unless-stopped"
+    volumes:
+      - "/var/www/html:/usr/local/apache2/htdocs"
