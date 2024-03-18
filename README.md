@@ -42,7 +42,8 @@
 
 5: Create the file “/etc/mysql/conf.d/custom.cnf” with the contents from: https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mariadb/etc/mysql/conf.d/custom.cnf 
 
-6: In the mariadb folder created in Step 4, create a new file called docker-compose and put the following content: https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mariadb/docker-compose.yml 
+6: In the mariadb folder created in Step 4, create a new file called docker-compose and put the following content: https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mariadb/docker-compose.yml
+   Make sure to update the `MARIADB_ROOT_PASSWORD` value
 
 7: From the mariadb folder created in Step 4, run the command: `docker compose up -d`
 
