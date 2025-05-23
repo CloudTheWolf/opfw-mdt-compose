@@ -3,7 +3,7 @@
 ## Pre-Reqs: 
 0: A domain name
 
-1: A VPS running with at least 8GB RAM
+1: A VPS running with at least 4GB RAM
 
 2: 2 Discord Bots (One for PD called MDT Management, and one for EMS called EMS Management) 
 
