@@ -17,9 +17,8 @@ services:
     networks:
       - traefik_default
     volumes:
-      - /conf/mdt-v2-server/.env:/usr/src/app/.env
-      - /nodelogs/:/home/node/.npm/_logs/
-      - /nodecache/:/home/node/.npm/_cacache
+      - /conf/mdt-v2-server/prod.env:/usr/src/app/.env:ro
+      - /mdt/emsRoles.js:/usr/src/app/bot/roles/pdRoles.js
     restart: unless-stopped
     
   # Remove the following if you don't need EMS Bot
@@ -34,7 +33,6 @@ services:
     networks:
       - traefik_default
     volumes:
-      - /conf/mdt-v2-server/.env:/usr/src/app/.env
-      - /nodelogs/:/home/node/.npm/_logs/
-      - /nodecache/:/home/node/.npm/_cacache
+      - /conf/mdt-v2-server/prod.env:/usr/src/app/.env:ro
+      - /mdt/emsRoles.js:/usr/src/app/bot/roles/emsRoles.js
     restart: unless-stopped
