@@ -64,7 +64,7 @@
 15: Run the following commands:
  chmod 666 /conf/mdt-v2-server/prod.env 
 
-16: Next, run the command docker login https://repo.legacyrp.company and enter the username and password (You will be given the username and password via Discord) 
+16: Next, run the command `docker login https://repo.legacyrp.company` and enter the username and password (You will be given the username and password via Discord) 
 
 17: Once done, make sure you are still in the mdt-site folder and run the command `docker compose up -d`
 
