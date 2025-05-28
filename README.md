@@ -91,6 +91,6 @@
 
 27: If all is done correctly the bots should be Online and the MDT should be accessible.
 
-28: Using the latest DB Schema (Provided in Via discord) import the schema using either MySql Workbench. Then go to the login table and create a new row with your CID, put the password as zzz and the reset_passphrase as changeme then set the date to some random future date. 
+28: Using the latest DB Schema ([HERE](https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/server/db_schema.sql)) import the schema using either MySql Workbench Or another tool. Then go to the login table and create a new row with your CID, put the password as zzz and the reset_passphrase as changeme then set the date to some random future date. 
 
 29: Now go to the login page of the mdt and click forgotten password, enter your CID and the code you set in step 25, then enter your new password of choice and you should now be good to login!
