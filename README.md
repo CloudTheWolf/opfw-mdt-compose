@@ -51,7 +51,7 @@
 
 9: In the server folder create a new file called .env and paste the contents from https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/server/.env.example into this file
 
-10: Set all the values as required, leaving OPFW_HTTP_API and HTTPS_KEY as is. (See here to get catbox hash: https://catbox.moe/user/register.php 
+10: Set all the values as required, leaving OPFW_HTTP_API and HTTPS_KEY as is. (See here to get FiveManage: [https://catbox.moe/user/register.php ](https://fivemanage.com/) )
 
 11: Now create a new file called pdRoles.js and paste the following contents: https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/server/bot/roles/pdRoles.js then configure with the roles you need. 
 
