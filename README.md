@@ -29,7 +29,7 @@
 
 # Install 
 
-0: In the DNS Settings for your domain, create 2 new A records for mdt and pd-server.
+0: In the DNS Settings for your domain, create 3 new A records for `mdt`, `pd-server`, and `whois` .
 
 1: Install Docker, including the compose plugin (See here: https://docs.docker.com/engine/install/) 
 
@@ -57,14 +57,12 @@
 
 12: Now create a new file called emsRoles.js and paste the following contents: https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/server/bot/roles/emsRoles.js   then configure with the roles you need.
 
-13: Now, client/helpers folder create a new file called axios-setup.js and paste the content of https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/client/axios-setup.js (replacing mysite.com with your site FQDN address, eg legacyrp.company) 
+13: Now, client/helpers folder create a new file called backend.js and paste the content of https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/client/backend.js (replacing mysite.com with your site FQDN address, eg legacyrp.company) 
 
 14: Going back to the mdt-site folder create a new file called docker-compose.yml and paste the contents of https://github.com/CloudTheWolf/opfw-mdt-compose/blob/main/mdt/web/docker-compose.yml then replace mysite.com with your FQDN on lines 20 and 45
 
 15: Run the following commands:
- chmod 777 /conf/mdt-v2-server/.env 
-And
-chmod 777 /conf/mdt-client/helpers/axios-setup.js
+ chmod 666 /conf/mdt-v2-server/prod.env 
 
 16: Next, run the command docker login https://repo.legacyrp.company and enter the username and password (You will be given the username and password via Discord) 
 
@@ -76,7 +74,7 @@ chmod 777 /conf/mdt-client/helpers/axios-setup.js
 
 20: Edit the appsettings.json and set the apiBaseUrl, apiKey, and mysql details
 
-21: install the dotnet 6 and dotnet 8 runtimes (See instructions here: https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian )
+21: Install the dotnet 6 and dotnet 8 runtimes (See instructions here: https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian ) (Both are needed)
 
 22: Run the command crontab -e, and if prompted, select the nano option, then paste the following
 ```
@@ -95,4 +93,4 @@ chmod 777 /conf/mdt-client/helpers/axios-setup.js
 
 28: Using the latest DB Schema (Provided in Via discord) import the schema using either MySql Workbench. Then go to the login table and create a new row with your CID, put the password as zzz and the reset_passphrase as changeme then set the date to some random future date. 
 
-29: now go to the login page of the mdt and click forgotten password, enter your CID and the code you set in step 25, then enter your new password of choice and you should now be good to login!
+29: Now go to the login page of the mdt and click forgotten password, enter your CID and the code you set in step 25, then enter your new password of choice and you should now be good to login!
