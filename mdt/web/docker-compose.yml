@@ -53,7 +53,7 @@ services:
     networks:
       - traefik_default
     volumes:
-      - /conf/mdt-client/helpers/axios-setup.js:/usr/src/app/src/helpers/axios-setup.js
+      - /conf/mdt-client/backend.js:/usr/local/apache2/htdocs/assets/backend.js:rw
       - /opt/bots/docker-build/mdt-v2-client/node_modules:/usr/src/app/node_modules
     restart: unless-stopped
       
