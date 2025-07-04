@@ -1,3 +1,41 @@
+# Project EOL
+The public version of this project has reached end of life and no further support for new deployments will be provided
+
+## What does this mean??
+
+You are free to download and run the MDT for your OPFW Server, however no support will be provided.
+The docker images will remain available until Version 3.0
+
+## Why the change?
+The current version of the MDT is a hastle to setup and maintain, and I don't have as much time as I used to, so can't support new installs.
+As such, I am "stepping away" from Version 2.x to focus on the new OP-MDT Project (Aka Version 3) which will be fully re-built from the ground
+up to make it easier for you to deploy for your own server!
+
+This includes cutting down from a 2 Service Deployment (Client and Server) to a single All In One package. 
+
+## FAQ
+
+- Q: Is there an ETA
+  
+  A: No ETA at this time
+  
+- Q: Will my old Data work on V3?
+
+  A: Yes, Version 3 will work with Version 2.x Databases (Although some work will need to be done)
+
+- Q: Will Version 3 remain Closed Source
+
+  A: No, Version 3 will be Open Source. The only reason Version 2 was Closed Source was due to the previous developer having some Hard Coded values and the current project not working that well with using configurable values. V3 will have an entire config Overhaul with some dynamic config moving to be Database controlled.
+
+- Q: What about the bots?
+
+  A: For now the bots will remain as they are while I focus on the actual MDT. Once that is fully finished, the bots will be moved to the [Legacy-RP-Discord-Bots](https://github.com/CloudTheWolf/Legacy-RP-Discord-Bots) project, mirroring the bots made for DOC and BCDF
+
+- Q: Anything else changing in Version 3.0?
+
+  A: Yes, Version 3.0 aims to also include support for DOC,DOJ and EMS (And Maybe BCFD if they would like)
+  This will allow for a fully integrated system between DOJ creating / maintaining the Penal Code, DOC handling extended sentencing etc, and EMS being able to fully integrate patiant data for a more in-depth Role Play experiance.
+
 # How to install Legacy RP MDT
 
 ## Pre-Reqs: 
@@ -64,7 +102,7 @@
 15: Run the following commands:
  chmod 666 /conf/mdt-v2-server/prod.env 
 
-16: Next, run the command `docker login https://repo.legacyrp.company` and enter the username and password (You will be given the username and password via Discord) 
+16: Next, run the command `docker login https://repo.legacyrp.company` and enter the username and password ( `legacy` for both user and pass) 
 
 17: Once done, make sure you are still in the mdt-site folder and run the command `docker compose up -d`
 
